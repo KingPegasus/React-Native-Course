@@ -1,14 +1,34 @@
+
+import { useState } from 'react';
 import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
 
 const FlexboxExample = () => {
+  const [enteredGoalText, setEnteredGoalText] = useState('');
+  const [courseGoals, setCourseGoals] = useState([]);
+  function goalInputHandler(enteredText) {
+    setEnteredGoalText(enteredText);
+  };
+  function addGoalHandler() {
+    setCourseGoals((currentGoals) => [...currentGoals, enteredGoalText]);
+    setEnteredGoalText('');
+  };
+
+
   return (
     <View style={{flex: 1}}>
       <View style={styles.inputContainer}>
-        <TextInput style={styles.textInput} placeholder='Enter your name...' />
-        <Button title='Add name' />
+        <TextInput 
+          style={styles.textInput} 
+          placeholder='Enter your goal...' 
+          onChangeText={goalInputHandler}
+          value={enteredGoalText}
+        />
+        <Button title='Add goal' onPress={addGoalHandler}/>
       </View>
       <View style={styles.goalsContainer}>
-        <Text style={{paddingVertical: 24}}>Names</Text>
+        {courseGoals.map((goal, index) => (
+          <Text key={index}>{goal}</Text>
+        ))}
       </View>
     </View>
   );
@@ -32,7 +52,7 @@ const styles = StyleSheet.create({
     padding: 8
   },
   goalsContainer: {
-   flex: 6, 
+   flex: 5, 
   }
 
 });
