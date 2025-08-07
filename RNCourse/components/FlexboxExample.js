@@ -27,7 +27,9 @@ const FlexboxExample = () => {
       </View>
       <View style={styles.goalsContainer}>
         {courseGoals.map((goal, index) => (
-          <Text key={index}>{goal}</Text>
+          <View key={index} style={styles.goalItem}>
+            <Text style={styles.goalItemText}>{goal}</Text>
+          </View>
         ))}
       </View>
     </View>
@@ -53,8 +55,16 @@ const styles = StyleSheet.create({
   },
   goalsContainer: {
    flex: 5, 
-  }
-
+  },
+  goalItem: {
+    margin: 8,
+    padding: 8,
+    backgroundColor: '#5e0acc',
+    borderRadius: 6
+  },
+  goalItemText: {
+    color: 'white',
+  },
 });
 
 export default FlexboxExample;
