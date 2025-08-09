@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, Text, TextInput, View, Button, ScrollView } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Button, FlatList } from 'react-native';
 
 const FlexboxExample = () => {
   const [enteredGoalText, setEnteredGoalText] = useState('');
@@ -8,7 +8,10 @@ const FlexboxExample = () => {
     setEnteredGoalText(enteredText);
   }
   function addGoalHandler() {
-    setCourseGoals(currentGoals => [...currentGoals, enteredGoalText]);
+    setCourseGoals(currentGoals => [
+      ...currentGoals,
+      { id: Math.random().toString(), text: enteredGoalText },
+    ]);
     setEnteredGoalText('');
   }
 
@@ -24,13 +27,15 @@ const FlexboxExample = () => {
         <Button title="Add goal" onPress={addGoalHandler} />
       </View>
       <View style={styles.goalsContainer}>
-        <ScrollView>
-          {courseGoals.map((goal, index) => (
-            <View key={index} style={styles.goalItem}>
-              <Text style={styles.goalItemText}>{goal}</Text>
+        <FlatList
+          data={courseGoals}
+          renderItem={itemData => (
+            <View style={styles.goalItem}>
+              <Text style={styles.goalItemText}>{itemData.item.text}</Text>
             </View>
-          ))}
-        </ScrollView>
+          )}
+          keyExtractor={(item, index) => item.id}
+        />
       </View>
     </View>
   );
