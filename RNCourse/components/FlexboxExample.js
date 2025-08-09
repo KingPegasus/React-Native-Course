@@ -29,7 +29,7 @@ const FlexboxExample = () => {
 
   return (
     <View style={{ flex: 1 }}>
-      <Button title="Add new goal" color="rgb(94, 10, 204)" onPress={startAddGoalHandler} />
+      <Button title="Add new goal" color="#a065ec" onPress={startAddGoalHandler} />
       <GoalInput onAddGoal={addGoalHandler} visible={modalVisible} onCancel={endAddGoalHandler} />
 
       <View style={styles.goalsContainer}>

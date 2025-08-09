@@ -2,14 +2,18 @@ import { StyleSheet, View } from 'react-native';
 import StylingExample from './components/StylingExample';
 import FlexboxExample from './components/FlexboxExample';
 import FlexBoxDeepDrive from './components/FlexBoxDeepDrive';
+import { StatusBar } from 'expo-status-bar';
 
 export default function App() {
   return (
-    <View style={styles.appContainer}>
-      <FlexBoxDeepDrive />
-      <FlexboxExample />
-      <StylingExample />
-    </View>
+    <>
+      <StatusBar style="light" />
+      <View style={styles.appContainer}>
+        <FlexBoxDeepDrive />
+        <FlexboxExample />
+        <StylingExample />
+      </View>
+    </>
   );
 }
 
@@ -19,5 +23,4 @@ const styles = StyleSheet.create({
     paddingTop: 50,
     paddingHorizontal: 20,
   },
-
 });
