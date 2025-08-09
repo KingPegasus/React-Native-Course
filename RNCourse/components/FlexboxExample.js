@@ -13,13 +13,23 @@ const FlexboxExample = () => {
     ]);
   }
 
+  function deleteGoalHandler(goalId) {
+    setCourseGoals(currentGoals => currentGoals.filter(goal => goal.id !== goalId));
+  }
+
   return (
     <View style={{ flex: 1 }}>
       <GoalInput onAddGoal={addGoalHandler} />
       <View style={styles.goalsContainer}>
         <FlatList
           data={courseGoals}
-          renderItem={itemData => <GoalItem text={itemData.item.text} />}
+          renderItem={itemData => (
+            <GoalItem
+              text={itemData.item.text}
+              onDeleteItem={deleteGoalHandler}
+              goalId={itemData.item.id}
+            />
+          )}
           keyExtractor={(item, index) => item.id}
         />
       </View>
