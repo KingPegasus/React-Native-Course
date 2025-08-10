@@ -1,10 +1,10 @@
 import { StyleSheet, View } from 'react-native';
-import StylingExample from './code/basics/components/StylingExample';
-import FlexboxExample from './code/basics/components/FlexboxExample';
-import FlexBoxDeepDrive from './code/basics/components/FlexBoxDeepDrive';
+import StylingExample from './components/StylingExample';
+import FlexboxExample from './components/FlexboxExample';
+import FlexBoxDeepDrive from './components/FlexBoxDeepDrive';
 import { StatusBar } from 'expo-status-bar';
 
-export default function App() {
+export default function AppBasics() {
   return (
     <>
       <StatusBar style="light" />
