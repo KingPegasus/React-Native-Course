@@ -6,14 +6,23 @@ function StartGameScreen() {
   return (
     <View style={styles.inputContainer}>
       <TextInput style={styles.numberInput} maxLength={2} keyboardType="number-pad" />
-      <PrimaryButton>Reset</PrimaryButton>
-      <PrimaryButton>Confirm</PrimaryButton>
+
+      <View style={styles.buttonsContainer}>
+        <View style={styles.buttonContainer}>
+          <PrimaryButton>Reset</PrimaryButton>
+        </View>
+        <View style={styles.buttonContainer}>
+          <PrimaryButton>Confirm</PrimaryButton>
+        </View>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   inputContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
     marginTop: 100,
     marginHorizontal: 24,
     padding: 16,
@@ -35,6 +44,14 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     fontWeight: 'bold',
     textAlign: 'center',
+  },
+  buttonsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    gap: 12,
+  },
+  buttonContainer: {
+    flex: 1,
   },
 });
 
