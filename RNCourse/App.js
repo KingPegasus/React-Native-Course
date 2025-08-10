@@ -1,19 +1,13 @@
-import { StyleSheet, View } from 'react-native';
-import StylingExample from './code/basics/components/StylingExample';
-import FlexboxExample from './code/basics/components/FlexboxExample';
-import FlexBoxDeepDrive from './code/basics/components/FlexBoxDeepDrive';
+import { StyleSheet, View, Text } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import StartGameScreen from './screens/StartGameScreen';
 
 export default function App() {
   return (
-    <>
-      <StatusBar style="light" />
-      <View style={styles.appContainer}>
-        <FlexBoxDeepDrive />
-        <FlexboxExample />
-        <StylingExample />
-      </View>
-    </>
+    <View style={styles.appContainer}>
+      <StartGameScreen />
+      <StatusBar style="auto" />
+    </View>
   );
 }
 
