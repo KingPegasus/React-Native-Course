@@ -14,7 +14,7 @@ export default function App() {
 
   let screen = <StartGameScreen onPickNumber={pickedNumberHandler} />;
   if (userNumber) {
-    screen = <GameScreen />;
+    screen = <GameScreen userNumber={userNumber} />;
   }
   return (
     <LinearGradient colors={[colors.primary800, colors.accent500]} style={styles.appContainer}>
