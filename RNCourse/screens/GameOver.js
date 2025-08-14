@@ -2,15 +2,20 @@ import { View, Image, StyleSheet, Text } from 'react-native';
 
 import Title from '../components/ui/Title';
 import Colors from '../constants/colors';
+import PrimaryButton from '../components/ui/PrimaryButton';
 
-function GameOverScreen() {
+function GameOverScreen({ attempts, userNumber }) {
   return (
     <View style={styles.screen}>
       <Title>Game Over!</Title>
       <View style={styles.imageContainer}>
         <Image source={require('../assets/images/success.png')} style={styles.image} />
       </View>
-      <Text style={styles.resultText}>You phone needed X attempts to guess the number Y.</Text>
+      <Text style={styles.resultText}>
+        You phone needed <Text style={styles.highlight}>{attempts}</Text> attempts to guess the
+        number <Text style={styles.highlight}>{userNumber}</Text>.
+      </Text>
+      <PrimaryButton>Start New Game</PrimaryButton>
     </View>
   );
 }
@@ -37,6 +42,12 @@ const styles = StyleSheet.create({
   resultText: {
     textAlign: 'center',
     fontSize: 24,
+    fontFamily: 'open-sans-bold',
+    color: Colors.primary500,
+    marginHorizontal: 8,
+    marginBottom: 24,
+  },
+  highlight: {
     fontFamily: 'open-sans-bold',
     color: Colors.primary500,
   },
