@@ -48,6 +48,11 @@ function GameScreen({ userNumber, onGameOver }) {
     }
   }, [guessedNumber, userNumber, onGameOver]);
 
+  useEffect(() => {
+    minBoundary = 1;
+    maxBoundary = 100;
+  }, []);
+
   return (
     <View style={styles.screen}>
       <Title>Opponent's Guess</Title>

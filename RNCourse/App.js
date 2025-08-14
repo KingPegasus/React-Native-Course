@@ -18,6 +18,7 @@ SplashScreen.preventAutoHideAsync()
 export default function App() {
   const [userNumber, setUserNumber] = useState();
   const [gameIsOver, setGameIsOver] = useState(false);
+  const [attempts, setAttempts] = useState(0);
 
   const [fontsLoaded] = useFonts({
     'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
@@ -43,10 +44,18 @@ export default function App() {
   function pickedNumberHandler(pickedNumber) {
     setUserNumber(pickedNumber);
     setGameIsOver(false);
+    setAttempts(0);
   }
 
   function gameIsOverHandler() {
     setGameIsOver(true);
+    setAttempts(0);
+  }
+
+  function startNewGameHandler() {
+    setUserNumber(null);
+    setGameIsOver(false);
+    setAttempts(0);
   }
 
   let screen = <StartGameScreen onPickNumber={pickedNumberHandler} />;
@@ -54,7 +63,13 @@ export default function App() {
     screen = <GameScreen userNumber={userNumber} onGameOver={gameIsOverHandler} />;
   }
   if (gameIsOver && userNumber) {
-    screen = <GameOverScreen />;
+    screen = (
+      <GameOverScreen
+        attempts={attempts}
+        userNumber={userNumber}
+        onStartNewGame={startNewGameHandler}
+      />
+    );
   }
 
   return (
