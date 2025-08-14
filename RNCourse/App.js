@@ -1,10 +1,11 @@
+import { useState } from 'react';
 import { StyleSheet, ImageBackground, SafeAreaView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { LinearGradient } from 'expo-linear-gradient';
+
 import StartGameScreen from './screens/StartGameScreen';
 import GameScreen from './screens/GameScreen';
-import { useState } from 'react';
-import colors from './constants/colors';
+import Colors from './constants/colors';
 import GameOverScreen from './screens/GameOver';
 
 export default function App() {
@@ -28,7 +29,7 @@ export default function App() {
     screen = <GameOverScreen />;
   }
   return (
-    <LinearGradient colors={[colors.primary800, colors.accent500]} style={styles.appContainer}>
+    <LinearGradient colors={[Colors.primary800, Colors.accent500]} style={styles.appContainer}>
       <ImageBackground
         source={require('./assets/images/background.png')}
         resizeMode="cover"

@@ -1,5 +1,7 @@
 import { View, StyleSheet } from 'react-native';
-import colors from '../../constants/colors';
+
+import Colors from '../../constants/colors';
+
 function Card({ children }) {
   return <View style={styles.inputContainer}>{children}</View>;
 }
@@ -12,7 +14,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginHorizontal: 24,
     padding: 16,
-    backgroundColor: colors.primary800,
+    backgroundColor: Colors.primary800,
     borderRadius: 8,
     elevation: 4,
     shadowColor: 'black',
