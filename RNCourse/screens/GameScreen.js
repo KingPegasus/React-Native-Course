@@ -7,6 +7,7 @@ import NumberContainer from '../components/game/NumberContainer';
 import PrimaryButton from '../components/ui/PrimaryButton';
 import Card from '../components/ui/Card';
 import InstructionText from '../components/ui/InstructionText';
+import GuessLogItem from '../components/game/GuessLogItem';
 
 function generateRandomBetween(min, max, exclude) {
   const randomNum = Math.floor(Math.random() * (max - min)) + min;
@@ -44,9 +45,11 @@ function GameScreen({ userNumber, onGameOver }) {
     setAttempts(prevGuesses => [newRandomNumber, ...prevGuesses]);
   }
 
+  const guessRoundsListLength = attempts.length;
+
   useEffect(() => {
     if (guessedNumber === userNumber) {
-      onGameOver();
+      onGameOver(attempts.length);
     }
   }, [guessedNumber, userNumber, onGameOver]);
 
@@ -74,10 +77,15 @@ function GameScreen({ userNumber, onGameOver }) {
           </View>
         </View>
       </Card>
-      <View>
+      <View style={styles.guessLogContainer}>
         <FlatList
           data={attempts}
-          renderItem={itemData => <Text style={styles.item}>{itemData.item}</Text>}
+          renderItem={itemData => (
+            <GuessLogItem
+              roundNumber={guessRoundsListLength - itemData.index}
+              guess={itemData.item}
+            />
+          )}
           keyExtractor={(item, index) => item.toString()}
         />
       </View>
@@ -103,10 +111,8 @@ const styles = StyleSheet.create({
   instructionText: {
     marginBottom: 12,
   },
-  item: {
-    color: 'white',
-    fontSize: 18,
-    textAlign: 'center',
-    paddingVertical: 4,
+  guessLogContainer: {
+    flex: 1,
+    padding: 16,
   },
 });

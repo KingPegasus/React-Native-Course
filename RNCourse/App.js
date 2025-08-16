@@ -44,12 +44,11 @@ export default function App() {
   function pickedNumberHandler(pickedNumber) {
     setUserNumber(pickedNumber);
     setGameIsOver(false);
-    setAttempts(0);
   }
 
-  function gameIsOverHandler() {
+  function gameIsOverHandler(numOfAttempts) {
     setGameIsOver(true);
-    setAttempts(0);
+    setAttempts(numOfAttempts);
   }
 
   function startNewGameHandler() {
