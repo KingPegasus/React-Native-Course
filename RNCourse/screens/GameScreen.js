@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { View, StyleSheet, Alert } from 'react-native';
+import { View, StyleSheet, Alert, FlatList, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import Title from '../components/ui/Title';
@@ -21,6 +21,7 @@ let maxBoundary = 100;
 function GameScreen({ userNumber, onGameOver }) {
   const initialGuess = generateRandomBetween(1, 100, userNumber);
   const [guessedNumber, setGuessedNumber] = useState(initialGuess);
+  const [attempts, setAttempts] = useState([initialGuess]);
 
   function nextGuessHandler(direction) {
     if (
@@ -40,6 +41,7 @@ function GameScreen({ userNumber, onGameOver }) {
     }
     const newRandomNumber = generateRandomBetween(minBoundary, maxBoundary, guessedNumber);
     setGuessedNumber(newRandomNumber);
+    setAttempts(prevGuesses => [newRandomNumber, ...prevGuesses]);
   }
 
   useEffect(() => {
@@ -72,7 +74,13 @@ function GameScreen({ userNumber, onGameOver }) {
           </View>
         </View>
       </Card>
-      {/* <View>LOG GUESSES</View> */}
+      <View>
+        <FlatList
+          data={attempts}
+          renderItem={itemData => <Text style={styles.item}>{itemData.item}</Text>}
+          keyExtractor={(item, index) => item.toString()}
+        />
+      </View>
     </View>
   );
 }
@@ -94,5 +102,11 @@ const styles = StyleSheet.create({
   },
   instructionText: {
     marginBottom: 12,
+  },
+  item: {
+    color: 'white',
+    fontSize: 18,
+    textAlign: 'center',
+    paddingVertical: 4,
   },
 });
