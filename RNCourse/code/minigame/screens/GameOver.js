@@ -1,6 +1,6 @@
 import { View, Image, StyleSheet, Text, useWindowDimensions, ScrollView } from 'react-native';
 
-import Title from '../components/ui/Title';
+import Title from '../code/minigame/components/ui/Title';
 import Colors from '../constants/colors';
 import PrimaryButton from '../components/ui/PrimaryButton';
 

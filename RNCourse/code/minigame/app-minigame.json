@@ -4,11 +4,11 @@
     "slug": "RNCourse",
     "version": "1.0.0",
     "orientation": "default",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/images/dice.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/icon.png",
+      "image": "./assets/images/dice.png",
       "resizeMode": "cover",
       "backgroundColor": "white"
     },
@@ -29,11 +29,11 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/icon.png",
+          "image": "./assets/images/dice.png",
           "resizeMode": "cover",
           "backgroundColor": "#ffffff",
           "dark": {
-            "image": "./assets/icon.png",
+            "image": "./assets/images/dice.png",
             "backgroundColor": "#000000"
           }
         }
