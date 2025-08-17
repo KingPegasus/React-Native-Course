@@ -1,40 +1,55 @@
-import { View, Image, StyleSheet, Text, Dimensions } from 'react-native';
+import { View, Image, StyleSheet, Text, useWindowDimensions, ScrollView } from 'react-native';
 
 import Title from '../components/ui/Title';
 import Colors from '../constants/colors';
 import PrimaryButton from '../components/ui/PrimaryButton';
 
 function GameOverScreen({ attempts, userNumber, onStartNewGame }) {
+  const { width, height } = useWindowDimensions();
+  let imageSize = 300;
+  if (width < 380) {
+    imageSize = 200;
+  }
+  if (height < 400) {
+    imageSize = 100;
+  }
+  const imageStyle = {
+    width: imageSize,
+    height: imageSize,
+    borderRadius: imageSize / 2,
+    margin: width < 380 ? 18 : 32,
+  };
   return (
-    <View style={styles.screen}>
-      <Title>Game Over!</Title>
-      <View style={styles.imageContainer}>
-        <Image source={require('../assets/images/success.png')} style={styles.image} />
+    <ScrollView style={styles.screen}>
+      <View style={styles.rootContainer}>
+        <Title>Game Over!</Title>
+        <View style={[styles.imageContainer, imageStyle]}>
+          <Image source={require('../assets/images/success.png')} style={styles.image} />
+        </View>
+        <Text style={styles.resultText}>
+          You phone needed <Text style={styles.highlight}>{attempts}</Text> attempts to guess the
+          number <Text style={styles.highlight}>{userNumber}</Text>.
+        </Text>
+        <PrimaryButton onPress={onStartNewGame}>Start New Game</PrimaryButton>
       </View>
-      <Text style={styles.resultText}>
-        You phone needed <Text style={styles.highlight}>{attempts}</Text> attempts to guess the
-        number <Text style={styles.highlight}>{userNumber}</Text>.
-      </Text>
-      <PrimaryButton onPress={onStartNewGame}>Start New Game</PrimaryButton>
-    </View>
+    </ScrollView>
   );
 }
 
-const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
   screen: {
+    flex: 1,
+  },
+  rootContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
   imageContainer: {
-    width: width < 380 ? 200 : 300,
-    height: width < 380 ? 200 : 300,
     borderRadius: 200,
     borderWidth: 3,
     borderColor: Colors.primary500,
     overflow: 'hidden',
-    margin: width < 380 ? 18 : 32,
   },
   image: {
     width: '100%',
