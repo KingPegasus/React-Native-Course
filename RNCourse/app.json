@@ -3,14 +3,15 @@
     "name": "RNCourse",
     "slug": "RNCourse",
     "version": "1.0.0",
-    "orientation": "default",
+    "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
+    "backgroundColor": "black",
     "splash": {
       "image": "./assets/icon.png",
       "resizeMode": "cover",
-      "backgroundColor": "white"
+      "backgroundColor": "black"
     },
     "ios": {
       "supportsTablet": true
@@ -31,7 +32,7 @@
         {
           "image": "./assets/icon.png",
           "resizeMode": "cover",
-          "backgroundColor": "#ffffff",
+          "backgroundColor": "white",
           "dark": {
             "image": "./assets/icon.png",
             "backgroundColor": "#000000"

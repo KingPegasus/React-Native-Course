@@ -8,7 +8,12 @@ function renderCategoryItem(itemData) {
 function CategoriesScreen() {
   return (
     <View>
-      <FlatList data={CATEGORIES} keyExtractor={item => item.id} renderItem={renderCategoryItem} />
+      <FlatList
+        data={CATEGORIES}
+        keyExtractor={item => item.id}
+        renderItem={renderCategoryItem}
+        numColumns={2}
+      />
     </View>
   );
 }
