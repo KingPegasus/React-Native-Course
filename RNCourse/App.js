@@ -30,7 +30,7 @@ export default function App() {
           <Stack.Screen
             name="Meals Overview"
             component={MealsOverviewScreen}
-            options={{ title: 'Meals' }}
+            // options={({ route }) => ({ title: route.params.categoryTitle })}
           />
         </Stack.Navigator>
       </View>
