@@ -1,25 +1,33 @@
+import { useLayoutEffect, useState } from 'react';
 import { ScrollView, View, Text, Button, Image, StyleSheet } from 'react-native';
+import IconButton from '../components/IconButton';
 import { MEALS } from '../data/dummy-data';
 import MealDetails from '../components/MealDetails';
 import Subtitle from '../components/MealDetail/Subtitle';
 import List from '../components/MealDetail/List';
-import { useLayoutEffect } from 'react';
 
 function MealDetailScreen({ route, navigation }) {
   const mealId = route.params.mealId;
 
   const selectedMeal = MEALS.find(meal => meal.id === mealId);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   function markFavorite() {
-    console.log('Marked as favorite');
+    setIsFavorite(prev => !prev);
   }
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => {
-        return <Button title="Favorite" onPress={markFavorite} />;
+        return (
+          <IconButton
+            icon={isFavorite ? 'star' : 'star-outline'}
+            onPress={markFavorite}
+            color="white"
+          />
+        );
       },
     });
-  }, [navigation, markFavorite]);
+  }, [navigation, markFavorite, isFavorite]);
   return (
     <ScrollView style={styles.rootContainer}>
       <Image source={{ uri: selectedMeal.imageUrl }} style={styles.image} />
