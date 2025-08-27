@@ -45,32 +45,34 @@ function DrawerNavigator() {
 }
 export default function App() {
   return (
-    <NavigationContainer>
-      <View style={styles.appContainer}>
-        <StatusBar style="light" />
-        <Stack.Navigator
-          screenOptions={{
-            headerStyle: { backgroundColor: '#4b5307' },
-            headerTintColor: 'white',
-            contentStyle: { backgroundColor: '#848f24' },
-          }}
-        >
-          <Stack.Screen
-            name="Drawer"
-            component={DrawerNavigator}
-            options={{
-              headerShown: false,
+    <FavoritesContextProvider>
+      <NavigationContainer>
+        <View style={styles.appContainer}>
+          <StatusBar style="light" />
+          <Stack.Navigator
+            screenOptions={{
+              headerStyle: { backgroundColor: '#4b5307' },
+              headerTintColor: 'white',
+              contentStyle: { backgroundColor: '#848f24' },
             }}
-          />
-          <Stack.Screen
-            name="Meals Overview"
-            component={MealsOverviewScreen}
-            // options={({ route }) => ({ title: route.params.categoryTitle })}
-          />
-          <Stack.Screen name="Meal Detail" component={MealDetailScreen} />
-        </Stack.Navigator>
-      </View>
-    </NavigationContainer>
+          >
+            <Stack.Screen
+              name="Drawer"
+              component={DrawerNavigator}
+              options={{
+                headerShown: false,
+              }}
+            />
+            <Stack.Screen
+              name="Meals Overview"
+              component={MealsOverviewScreen}
+              // options={({ route }) => ({ title: route.params.categoryTitle })}
+            />
+            <Stack.Screen name="Meal Detail" component={MealDetailScreen} />
+          </Stack.Navigator>
+        </View>
+      </NavigationContainer>
+    </FavoritesContextProvider>
   );
 }
 
