@@ -1,4 +1,5 @@
 import { StyleSheet, View } from 'react-native';
+import { COLORS } from './constants/colors';
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -8,6 +9,7 @@ import CategoriesScreen from './screens/CategoriesScreen';
 import MealsOverviewScreen from './screens/MealsOverviewScreen';
 import MealDetailScreen from './screens/MealDetailScreen';
 import FavoritesScreen from './screens/FavoritesScreen';
+import FavoritesContextProvider from './store/context/favorites-context';
 import { Ionicons } from '@expo/vector-icons';
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -16,13 +18,13 @@ function DrawerNavigator() {
   return (
     <Drawer.Navigator
       screenOptions={{
-        headerStyle: { backgroundColor: '#4b5307' },
-        headerTintColor: 'white',
-        sceneContainerStyle: { backgroundColor: '#848f24' },
-        drawerContentStyle: { backgroundColor: '#4b5307' },
-        drawerActiveTintColor: '#4b5307',
-        drawerActiveBackgroundColor: '#aab262',
-        drawerInactiveTintColor: 'white',
+        headerStyle: { backgroundColor: COLORS.primary },
+        headerTintColor: COLORS.text,
+        sceneContainerStyle: { backgroundColor: COLORS.background },
+        drawerContentStyle: { backgroundColor: COLORS.primary },
+        drawerActiveTintColor: COLORS.primary,
+        drawerActiveBackgroundColor: COLORS.accent,
+        drawerInactiveTintColor: COLORS.text,
       }}
     >
       <Drawer.Screen
@@ -51,9 +53,9 @@ export default function App() {
           <StatusBar style="light" />
           <Stack.Navigator
             screenOptions={{
-              headerStyle: { backgroundColor: '#4b5307' },
+              headerStyle: { backgroundColor: COLORS.primary },
               headerTintColor: 'white',
-              contentStyle: { backgroundColor: '#848f24' },
+              contentStyle: { backgroundColor: COLORS.background },
             }}
           >
             <Stack.Screen
