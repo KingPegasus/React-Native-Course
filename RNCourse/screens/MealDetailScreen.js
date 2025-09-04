@@ -22,9 +22,9 @@ function MealDetailScreen({ route, navigation }) {
 
   function markFavorite() {
     if (mealIsFavorite) {
-      dispatch(removeFavorite(mealId));
+      dispatch(removeFavorite({ id: mealId }));
     } else {
-      dispatch(addFavorite(mealId));
+      dispatch(addFavorite({ id: mealId }));
     }
   }
 
